@@ -6,10 +6,106 @@
 
 main {
   display: grid;
-  gap: 0.5rem;
+  grid-template-columns: 2fr 1fr;
+  gap: 30px;
+
+  width: 1000px;
+  margin: 40px auto;
 }
 
-h1,
-p {
+main h1 {
+  grid-column: 1 / -1;
+}
+
+body {
   margin: 0;
+  background-color:#c4ffd0;
+}
+
+h1{
+  margin: 0;
+  color :#267736;
+  font-size :35px;
+}
+
+h2 {
+  margin: 0;
+  color :#267736;
+  font-size :20px;
+}
+
+article img {
+  width: 140px;
+  height: 140px;
+  object-fit: cover;
+}
+
+article {
+  display: inline-block;
+  width: 20px;
+  border: 1px solid #cccccc;
+  padding: 12px;
+  margin: 20px;
+  text-align: center;
+}
+
+section:first-of-type {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+section:first-of-type h2 {
+  width: 100%;
+}
+
+section:first-of-type article {
+  width: 160px;
+}
+
+section:last-of-type {
+  padding: 20px; 
+  background-color: #ffffff; 
+  border: 1px solid #cccccc; 
+}
+
+section:last-of-type ul {
+  padding: 0;
+  list-style: none;
+}
+
+section:last-of-type li {
+  margin-bottom: 12px;
+  display : flex;
+  align-items : center;
+}
+
+.item-name {
+  flex: 1;
+}
+
+button {
+  background-color: #315d4f; 
+  color: white; 
+  border: 1px solid #315d4f; 
+  padding: 8px 12px; 
+  border-radius: 8px; 
+  cursor: pointer; 
+}
+
+section:last-of-type li button {
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  margin: 0 6px;
+}
+
+button:hover {
+  background-color: #24483d; 
+}
+
+button:disabled {
+  background-color: #aebbb3; 
+  border-color: #aebbb3;
+  cursor: not-allowed; 
 }
