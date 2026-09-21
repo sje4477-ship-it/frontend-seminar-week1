@@ -3,9 +3,9 @@ import { useState } from "react";
 
 function App() {
   const menus = [
-    { id: 1, name: "아메리카노", price: 4500,  image: "/images/americano.jpg" },
-    { id: 2, name: "녹차라테", price: 5000, image: "/images/matcha.png" },
-    { id: 3, name: "딸기 스무디", price: 5500, image: "/images/strawberry.jpg" },
+    { id: 1, name: "아메리카노", price: 4500,  image: "/images/americano.jpg", category: "coffee", },
+    { id: 2, name: "녹차라테", price: 5000, image: "/images/matcha.png", category: "latte", },
+    { id: 3, name: "딸기 스무디", price: 5500, image: "/images/strawberry.jpg", category: "smoothie", },
   ];
 
 
@@ -13,6 +13,10 @@ function App() {
     { id: number; name: string; price: number; quantity: number }[]
   >([]);
 
+  const [selectedCategory, setSelectedCategory] = useState("all");
+
+  const filteredMenus = selectedCategory === "all" ? menus : menus.filter((menu) => menu.category === selectedCategory);
+  
   function addToCart(menu: { id: number; name: string; price: number }) {
     setCart((currentCart) => {
       const alreadyInCart = currentCart.find((item) => item.id === menu.id);
@@ -74,8 +78,14 @@ function handleOrder() {
 
       <section>
         <h2>메뉴</h2>
-
-        {menus.map((menu) => (
+        <div className="category-buttons">
+          <button onClick={() => setSelectedCategory("all")}>전체</button>
+          <button onClick={() => setSelectedCategory("coffee")}>커피</button>
+          <button onClick={() => setSelectedCategory("latte")}>라테</button>
+          <button onClick={() => setSelectedCategory("smoothie")}>스무디</button>
+        </div>
+          
+        {filteredMenus.map((menu) => (
           <article key={menu.id}>
             <h3>{menu.name}</h3>
             <img src={menu.image} alt={menu.name} />

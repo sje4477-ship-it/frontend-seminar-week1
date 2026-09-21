@@ -47,16 +47,24 @@ article {
   padding: 12px;
   margin: 20px;
   text-align: center;
+  min-height: 380px;
+  margin: 0;
 }
 
 section:first-of-type {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(3, 200px);
   gap: 20px;
+  align-items: stretch;
 }
 
 section:first-of-type h2 {
   width: 100%;
+}
+
+section:first-of-type h2,
+.category-buttons {
+  grid-column: 1 / -1; 
 }
 
 section:first-of-type article {
@@ -108,4 +116,12 @@ button:disabled {
   background-color: #aebbb3; 
   border-color: #aebbb3;
   cursor: not-allowed; 
+}
+
+.category-buttons {
+  margin-bottom: 20px;
+}
+
+.category-buttons button {
+  margin-right: 8px;
 }
